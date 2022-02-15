@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudenController; //necesario para las rutas
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Ruta de prueba
 Route::get('/', function () {
-    return view('welcome');
+    return view('Estudiante.listaStuden');
 });
+
+//Ruta de Formulario GUardar
+Route::get('/form', [StudenController::class,'form']);
+
+//Ruta para Guardar al usuario
+Route::post('/Estudiante/crearStuden', [StudenController::class,'save'])->name('Estudiante.save');

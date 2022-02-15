@@ -130,9 +130,28 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'nombre' => [
+            'required' => 'El nombre es requerido',
+            'string'   => 'El tipo de dato es incorrecto',
+            'max:255'  => 'Es demasiado largo el nombre'
         ],
+
+        'correo' => [
+            'required' => 'El correo es requerido',
+            'string'   => 'El tipo de dato es incorrecto',
+            'max:255'  => 'Es demasiado largo el correo'
+        ],
+
+        'grado' => [
+            'required' => 'El grado es requerido',
+            'string'   => 'El tipo de dato es incorrecto',
+            'max:20'   => 'Es demasiado largo'
+        ],
+
+        'foto' => [
+            'required' => 'La foto es requerida'
+        ]
+
     ],
 
     /*
