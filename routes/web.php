@@ -14,12 +14,10 @@ use App\Http\Controllers\StudenController; //necesario para las rutas
 |
 */
 
-//Ruta de prueba
-Route::get('/', function () {
-    return view('Estudiante.listaStuden');
-});
+//Ruta de Lista
+Route::get('/', [StudenController::class,'lista']);
 
-//Ruta de Formulario GUardar
+//Ruta de Formulario Guardar
 Route::get('/form', [StudenController::class,'form']);
 
 //Ruta para Guardar al usuario

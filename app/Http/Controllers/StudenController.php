@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class StudenController extends Controller
 {
 
+    //Lista
+    public function lista(){
+        $datos['studen'] = Estudiante::paginate(3);
+
+        return view('Estudiante.listaStuden', $datos);
+    }
+
+
     //Formulario
     public function form(){
 
@@ -18,6 +26,8 @@ class StudenController extends Controller
     //Guardar
     public function save(Request $request){
 
+        $datostuden = request()->except('_token');
+
         $validator = $this->validate($request, [
             'nombre'=> 'required|string|max:255',
             'correo'=>'required|string|max:255',
@@ -25,13 +35,12 @@ class StudenController extends Controller
             'foto'=>'required:estudiante'
         ]);
 
-        $datostuden = request()->except('_token');
-        Estudiante::insert($datostuden);
-
         //Para la foto
         if($request->hasFile('foto')){
             $datostuden['foto']=$request->file("foto")->store('uploads', 'public');
         }
+
+        Estudiante::insert($datostuden);
 
         return back()->with('studenGuardado', 'Estudiante Guardado');
 
