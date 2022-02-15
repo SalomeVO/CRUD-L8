@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StudenController extends Controller
 {
@@ -43,6 +44,20 @@ class StudenController extends Controller
         Estudiante::insert($datostuden);
 
         return back()->with('studenGuardado', 'Estudiante Guardado');
+
+    }
+
+    //Eliminar
+    public function delete($id){
+
+        $studen= Estudiante::findOrFail($id);
+
+        if(Storage::delete('public/'.$studen->foto)){
+
+            Estudiante::destroy($id);
+        }
+
+        return back()->with('studenEliminado', 'Estdudiante Eliminado');
 
     }
 }

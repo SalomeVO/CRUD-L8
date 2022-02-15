@@ -22,3 +22,6 @@ Route::get('/form', [StudenController::class,'form']);
 
 //Ruta para Guardar al usuario
 Route::post('/Estudiante/crearStuden', [StudenController::class,'save'])->name('Estudiante.save');
+
+//Ruta para Eliminar
+Route::delete('/delete/{id}', [StudenController::class,'delete'])->name('delete');

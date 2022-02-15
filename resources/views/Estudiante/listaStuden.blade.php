@@ -9,6 +9,13 @@
 
                 <a class="btn btn-success mb-4" href="{{url('/form')}}">AGREGAR USUARIO</a>
 
+                <!--Mensaje de Eliminar-->
+                @if(session('studenEliminado'))
+                    <div class="alert alert-success">
+                        {{ session('studenEliminado') }}
+                    </div>
+                @endif
+
                 <table class="table table-striped text-center">
                     <thead>
                         <tr>
@@ -16,6 +23,7 @@
                             <th>Nombre</th>
                             <th>Grado</th>
                             <th>Correo</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 
@@ -24,12 +32,25 @@
                         @foreach($studen as $studens)
                         <tr>
                             <td>
-                             <img src="{{ asset('storage').'/'. $studens->foto}}" class="img-fluid img-thumbnail"  width="200px" >
+                             <img src="{{ asset('storage').'/'. $studens->foto}}" class="img-fluid img-thumbnail"  width="100px" >
                             </td>
 
                             <td>{{$studens->nombre}}</td>
                             <td>{{$studens->grado}}</td>
                             <td>{{$studens->correo}}</td>
+
+                            <td>
+
+                                <form action="{{ route('delete', $studens->id) }}" method="POST">
+                                @csrf @method('DELETE')
+
+                                    <button type="submit" onclick="return confirm('¿Desea eliminar al estudiante?');" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+
+                                </form>
+
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
