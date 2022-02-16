@@ -5,9 +5,9 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="cold-md-11">
-                <h2 class="text-center mb-5">Estudiantes</h2>
+                <h1 class="text-center mb-5">Estudiantes</h1>
 
-                <a class="btn btn-success mb-4" href="{{url('/form')}}">AGREGAR USUARIO</a>
+                <a class="btn btn-success mb-4" href="{{url('/form')}}">AGREGAR</a>
 
                 <!--Mensaje de Eliminar-->
                 @if(session('studenEliminado'))
@@ -16,8 +16,23 @@
                     </div>
                 @endif
 
-                <table class="table table-striped text-center">
-                    <thead>
+            <!--Mensaje de Modificacion-->
+                @if(session('studenModificado'))
+                    <div class="alert alert-success">
+                        {{session('studenModificado')}}
+                    </div>
+                @endif
+
+            <!--Mensaje de Guardado-->
+                @if(session('studenGuardado'))
+                    <div class="alert alert-success">
+                        {{session('studenGuardado')}}
+                    </div>
+                @endif
+
+                <div class="col-xl-30">
+                    <table class="table table-bordered table-striped text-center" style="background-color: #ABEBC6;">
+                        <thead>
                         <tr>
                             <th>Foto</th>
                             <th>Nombre</th>
@@ -25,41 +40,45 @@
                             <th>Correo</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
 
                         @foreach($studen as $studens)
-                        <tr>
-                            <td>
-                             <img src="{{ asset('storage').'/'. $studens->foto}}" class="img-fluid img-thumbnail"  width="100px" >
-                            </td>
+                            <tr>
+                                <td>
+                                    <img src="{{ asset('storage').'/'. $studens->foto}}" class="img-fluid img-thumbnail"  width="100px" high="100px">
+                                </td>
 
-                            <td>{{$studens->nombre}}</td>
-                            <td>{{$studens->grado}}</td>
-                            <td>{{$studens->correo}}</td>
+                                <td>{{$studens->nombre}}</td>
+                                <td>{{$studens->grado}}</td>
+                                <td>{{$studens->correo}}</td>
 
-                            <td>
+                                <td>
 
-                                <a href="{{ route('editform', $studens->id) }}" class="btn btn-primary">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
+                                    <div class="btn-group">
 
-                                <form action="{{ route('delete', $studens->id) }}" method="POST">
-                                @csrf @method('DELETE')
+                                        <a href="{{ route('editform', $studens->id) }}" class="btn btn-primary mb-3 mr-2">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
 
-                                    <button type="submit" onclick="return confirm('¿Desea eliminar al estudiante?');" class="btn btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                        <form action="{{ route('delete', $studens->id) }}" method="POST">
+                                            @csrf @method('DELETE')
 
-                                </form>
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar al estudiante?');" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
 
-                            </td>
-                        </tr>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
                         @endforeach
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
 
                 <!--paginas-->
                 {{ $studen->onEachSide(3)->links() }}

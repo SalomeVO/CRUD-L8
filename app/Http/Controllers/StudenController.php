@@ -36,14 +36,14 @@ class StudenController extends Controller
             'foto'=>'required:estudiante'
         ]);
 
-        //Para la foto
+        //Guardar la foto
         if($request->hasFile('foto')){
             $datostuden['foto']=$request->file("foto")->store('uploads', 'public');
         }
 
         Estudiante::insert($datostuden);
 
-        return back()->with('studenGuardado', 'Estudiante Guardado');
+        return redirect('/')->with('studenGuardado', 'Estudiante Guardado');
 
     }
 
@@ -58,7 +58,7 @@ class StudenController extends Controller
             Estudiante::destroy($id); //eliminar los estudiantes
         }
 
-        return back()->with('studenEliminado', 'Estdudiante Eliminado');
+        return redirect('/')->with('studenEliminado', 'Estudiante Eliminado');
     }
 
     //Formulario Guardar
@@ -87,6 +87,6 @@ class StudenController extends Controller
         Estudiante::where('id', '=', $id)->update($datoStuden);
         $studen= Estudiante::findOrFail($id);
 
-        return back()->with('studenModificado', 'Estudiante Modificado', compact('studen'));
+        return redirect('/')->with('studenModificado', 'Estudiante Modificado', compact('studen'));
     }
 }

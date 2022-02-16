@@ -6,12 +6,6 @@
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5">
 
-                <!--Mensaje de Modificacion-->
-                @if(session('studenModificado'))
-                    <div class="alert alert-success">
-                        {{session('studenModificado')}}
-                    </div>
-                @endif
 
             <!--Validacion de errores-->
                 @if($errors->any())
@@ -25,13 +19,13 @@
                     </div>
                 @endif
 
-                <div class="card border-success">
+                <div class="card border-primary">
                     <form action="{{ route('edit', $studen->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
 
-                        <div class="card-header border-success text-center" style="background-color: #EAFAF1;" >MODIFICAR USUARIO</div>
+                        <div class="card-header border-primary text-center text-white" style="background-color: #21618C;" >MODIFICAR USUARIO</div>
 
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #D6EAF8;">
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Nombre</label>
@@ -48,14 +42,23 @@
                                 <input type="text" name="correo" class="form-control col-md-9" value="{{$studen->correo}}">
                             </div>
 
-                            <div class="row form-group">
-                                <label for="" class="col-2">Foto</label>
-                                <img src="{{ asset('storage').'/'. $studen->foto}}" class="img-fluid img-thumbnail"  width="100px" >
-                                <input type="file" name="foto" class="form-control col-md-9" value="{{$studen->foto}}">
+                            <img src="{{ asset('storage').'/'. $studen->foto}}" class="img-fluid img-thumbnail"  width="100px">
+                            <div class="input-group mb-3 col-md-13">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Foto</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="foto" class="custom-file-input" id="inputGroupFile01"
+                                      aria-describedby="inputGroupFileAddon01" value="{{$studen->foto}}">
+
+                                    <label class="custom-file-label" for="inputGroupFile01">Eliga un archivo</label>
+                                </div>
                             </div>
 
                             <div class="row form-group">
-                                <button type="submit" class="btn btn-success col-md-9 offset-2">Modificar</button>
+                                <button type="submit" class="btn btn-primary text-dark col-md-9 offset-2 mb-2" style="background-color: #5499C7;">Modificar</button>
+
+                                <a class="btn btn-outline-secondary col-md-9 offset-2 text-dark" href="{{url('/')}}" role="button">Regresar</a>
                             </div>
 
                         </div>
@@ -63,7 +66,5 @@
                 </div>
             </div>
         </div>
-
-        <a class="btn btn-light btn-xs mt-5" href="{{ url('/') }}">&laquo volver</a>
     </div>
 @endsection
