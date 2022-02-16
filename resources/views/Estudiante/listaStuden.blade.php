@@ -41,6 +41,10 @@
 
                             <td>
 
+                                <a href="{{ route('editform', $studens->id) }}" class="btn btn-primary">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+
                                 <form action="{{ route('delete', $studens->id) }}" method="POST">
                                 @csrf @method('DELETE')
 

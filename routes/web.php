@@ -25,3 +25,9 @@ Route::post('/Estudiante/crearStuden', [StudenController::class,'save'])->name('
 
 //Ruta para Eliminar
 Route::delete('/delete/{id}', [StudenController::class,'delete'])->name('delete');
+
+//Ruta de Formulario Editar
+Route::get('/editform/{id}', [StudenController::class,'editform'])->name('editform');
+
+//Ruta para Editar
+Route::patch('/edit/{id}', [StudenController::class, 'edit'])->name('edit');

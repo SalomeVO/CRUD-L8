@@ -52,12 +52,41 @@ class StudenController extends Controller
 
         $studen= Estudiante::findOrFail($id);
 
+        //para eliminar foto
         if(Storage::delete('public/'.$studen->foto)){
 
-            Estudiante::destroy($id);
+            Estudiante::destroy($id); //eliminar los estudiantes
         }
 
         return back()->with('studenEliminado', 'Estdudiante Eliminado');
+    }
 
+    //Formulario Guardar
+    public function editform($id){
+
+        $studen= Estudiante::findOrFail($id);
+
+        return view('Estudiante.editStuden', compact('studen'));
+    }
+
+    //Editar
+    public function edit(Request $request, $id){
+
+        $datoStuden = request()->except((['_token', '_method']));
+
+        //Editar foto
+        if($request->hasFile('foto')){
+
+            $studen= Estudiante::findOrFail($id);
+
+            Storage::delete('public/'.$studen->foto);
+
+            $datoStuden['foto']=$request->file("foto")->store('uploads', 'public');
+        }
+
+        Estudiante::where('id', '=', $id)->update($datoStuden);
+        $studen= Estudiante::findOrFail($id);
+
+        return back()->with('studenModificado', 'Estudiante Modificado', compact('studen'));
     }
 }
