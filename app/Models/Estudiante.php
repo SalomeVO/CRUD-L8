@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Estudiante extends Model
 {
     protected $table='estudiante';
-    public $timestamps=false;
+   /** public $timestamps=false;
     protected $fillable=[
         'id','nombre','correo','grado', 'foto',
     ];
 
-    protected $primaryKey='id';
+    protected $primaryKey='id'; **/
+    use HasFactory;
 }
