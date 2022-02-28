@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Estudiante;
 use Illuminate\Database\Seeder;
 
-class Studen_seeder extends Seeder
+class studenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class Studen_seeder extends Seeder
      */
     public function run()
     {
-        Estudiante::factory(10)->create();
+      Estudiante::factory(10)->create(); //le digo cuantos datos quiero crear
     }
 }

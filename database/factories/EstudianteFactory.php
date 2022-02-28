@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Estudiante;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class Studen_factoryFactory extends Factory
+class EstudianteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -13,15 +13,15 @@ class Studen_factoryFactory extends Factory
      * @return array
      */
 
-    protected $user = Estudiante::class;
+    protected $studen = Estudiante::class;
+
     public function definition()
     {
         return [
             'nombre'=>$this->faker->name,
-            'correo'=>$this->faker->unique()->safeEmail,
-            'grado'=>$this->faker->name,
-            'foto'=>$this->faker->name,
-
+            'correo'=>$this->faker->email ,
+            'grado'=>$this->faker->randomDigit,
+            'foto'=>$this->faker->imageUrl($width = "100px", $height = "100px"),
         ];
     }
 }
