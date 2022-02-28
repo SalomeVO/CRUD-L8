@@ -14,6 +14,6 @@ class studenSeeder extends Seeder
      */
     public function run()
     {
-      Estudiante::factory(10)->create(); //le digo cuantos datos quiero crear
+      Estudiante::factory(1000)->create(); //le digo cuantos datos quiero crear
     }
 }

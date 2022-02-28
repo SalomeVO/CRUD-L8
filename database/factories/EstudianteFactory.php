@@ -18,6 +18,7 @@ class EstudianteFactory extends Factory
     public function definition()
     {
         return [
+            //los campos para llenar
             'nombre'=>$this->faker->name,
             'correo'=>$this->faker->email ,
             'grado'=>$this->faker->randomDigit,

@@ -11,7 +11,7 @@ class StudenController extends Controller
 
     //Lista
     public function lista(){
-        $datos['studen'] = Estudiante::paginate(3);
+        $datos['studen'] = Estudiante::paginate(50); //el numero de filas
 
         return view('Estudiante.listaStuden', $datos);
     }

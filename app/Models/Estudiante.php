@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estudiante extends Model
 {
-    use HasFactory;
+    use HasFactory; //se utiliza para que funcione las factorias
 
     public $table='estudiante';
 
