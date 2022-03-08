@@ -150,6 +150,13 @@ return [
 
         'foto' => [
             'required' => 'La foto es requerida'
+        ],
+
+        'nombre_profe' => [
+            'required' => 'Es necesario llenar el campo',
+            'string' => 'El tipo de dato es incorrecto',
+            'max:45' => 'El nombre es demasiado largo',
+            'unique' => 'El nombre debe ser unico',
         ]
 
     ],

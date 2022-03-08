@@ -40,13 +40,13 @@ Route::get('/profer', [ProferController::class,'listaProfer']);
 Route::get('/formProfer', [ProferController::class,'formProfer']);
 
 //Ruta para Guardar al usuario
-Route::post('/profer/crearProfer', [ProferController::class,'saveProfer'])->name('Estudiante.save');
-
-//Ruta para Eliminar
-Route::delete('/deleteProfer/{id}', [ProferController::class,'destroy'])->name('deleteProfer');
+Route::post('/profer/crearProfer', [ProferController::class,'saveProfer'])->name('Profer.save');
 
 //Ruta de Formulario Editar
 Route::get('/editformProfer/{id}', [ProferController::class,'editformProfer'])->name('editformProfer');
 
 //Ruta para Editar
 Route::patch('/editProfer/{id}', [ProferController::class, 'editProfer'])->name('editProfer');
+
+//Ruta para Eliminar
+Route::delete('/deleteProfer/{id}', [ProferController::class,'destroy'])->name('deleteProfer');

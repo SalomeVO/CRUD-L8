@@ -12,6 +12,8 @@ class ProferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Lista
     public function listaProfer()
     {
         $datos['profers'] = profer::paginate(50); //el numero de filas
@@ -19,34 +21,39 @@ class ProferController extends Controller
         return view('profer.listaProfer', $datos);
     }
 
-    public function create()
+    //Formulario
+    public function formProfer()
+    {
+        return view('profer.crearProfer');
+    }
+
+    //Guardar
+    public function saveProfer(Request $request)
+    {
+        $validator_l = $this->validate($request, [
+            'nombre_profe'=>'required|string|max:45|unique:profers',
+        ]);
+
+        profer::create([
+            'nombre_profe'=> $validator_l['nombre_profe'],
+        ]);
+
+        return redirect('/listaProfer')->with('proferGuardado', "Nombre del Profesor Guardado");
+    }
+
+    //Formulario Editar
+    public function editformProfer($id_profer)
+    {
+        return view('profer.editProfer');
+    }
+
+    //Editar
+    public function editProfer(Request $request)
     {
         //
     }
 
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(profer $profer)
-    {
-        //
-    }
-
-
-    public function edit(profer $profer)
-    {
-        //
-    }
-
-
-    public function update(Request $request, profer $profer)
-    {
-        //
-    }
-
+    //Eliminar
     public function destroy(profer $profer)
     {
         //
