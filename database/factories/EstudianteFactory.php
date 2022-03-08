@@ -23,6 +23,7 @@ class EstudianteFactory extends Factory
             'correo'=>$this->faker->email ,
             'grado'=>$this->faker->randomDigit,
             'foto'=>$this->faker->imageUrl($width = "100px", $height = "100px"),
+            'id_profer' => $this->faker->numberBetween(1,4) //el rango que quiero que me llene
         ];
     }
 }
