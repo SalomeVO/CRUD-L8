@@ -16,6 +16,13 @@
                     </div>
                 @endif
 
+            <!--Mensaje de Eliminado-->
+                @if(session('proferEliminado'))
+                    <div class="alert alert-success">
+                        {{session('proferEliminado')}}
+                    </div>
+                @endif
+
                 <div class="col-xl-30">
                     <table class="table table-bordered table-striped text-center" style="background-color: #ABEBC6;">
                         <thead>
@@ -42,7 +49,7 @@
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
-                                        <form action="" method="POST">
+                                        <form action="{{route('deleteProfer', $profers->id_profer)}}" method="POST">
                                             @csrf @method('DELETE')
 
                                             <button type="submit" onclick="return confirm('¿Desea eliminar al estudiante?');" class="btn btn-danger">

@@ -54,8 +54,10 @@ class ProferController extends Controller
     }
 
     //Eliminar
-    public function destroy(profer $profer)
+    public function destroy($id_profer)
     {
-        //
+        profer::destroy($id_profer);
+
+        return redirect('/profer')->with('proferEliminado', "El nombre del profesor fue eliminado");
     }
 }
