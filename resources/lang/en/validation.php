@@ -152,6 +152,10 @@ return [
             'required' => 'La foto es requerida'
         ],
 
+        'id_profer' => [
+            'required' => 'Debe elegir un profesor'
+        ],
+
         'nombre_profe' => [
             'required' => 'Es necesario llenar el campo',
             'string' => 'El tipo de dato es incorrecto',

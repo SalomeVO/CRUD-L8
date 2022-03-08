@@ -38,6 +38,7 @@
                             <th>Nombre</th>
                             <th>Grado</th>
                             <th>Correo</th>
+                            <th>Profesor</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -53,6 +54,7 @@
                                 <td>{{$studens->nombre}}</td>
                                 <td>{{$studens->grado}}</td>
                                 <td>{{$studens->correo}}</td>
+                                <td>{{$studens->nombre_profe}}</td>
 
                                 <td>
 
@@ -81,7 +83,7 @@
                 </div>
 
                 <!--paginas-->
-                {{ $studen->onEachSide(3)->links() }}
+                {{ $studen->links() }}
 
             </div>
         </div>

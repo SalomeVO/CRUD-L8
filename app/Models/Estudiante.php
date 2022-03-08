@@ -13,7 +13,7 @@ class Estudiante extends Model
 
     public $timestamps=false;
     protected $fillable=[
-        'id','nombre','correo','grado', 'foto',
+        'id','nombre','correo','grado', 'foto','id_profer',
     ];
 
     protected $primaryKey='id';

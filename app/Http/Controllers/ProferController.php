@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class ProferController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     //Lista
     public function listaProfer()
     {

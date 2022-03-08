@@ -51,6 +51,23 @@
                                 </div>
                             </div>
 
+                            <!--para elegir un profesor-->
+                            <div class="row mb-3">
+                                <div class="col-6 offset-3">
+                                    <div class="form-group">
+                                        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Proferosor</label>
+                                        <select name="id_profer" class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+                                            <option class="align-self-center text-center" value="">--Profesores--</option>
+
+                                            @foreach($profer as $profers)
+                                                <option value="{{$profers->id_profer}}"> {{$profers->nombre_profe}}  </option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row form-group">
                                 <button type="submit" class="btn btn col-md-9 offset-2 text-dark mb-2" style="background-color: #58D68D;">Guardar</button>
 
