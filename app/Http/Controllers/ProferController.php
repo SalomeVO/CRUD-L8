@@ -44,13 +44,18 @@ class ProferController extends Controller
     //Formulario Editar
     public function editformProfer($id_profer)
     {
-        return view('profer.editProfer');
+        $profer = profer::findOrFail($id_profer);
+
+        return view('profer.editProfer', compact('profer'));
     }
 
     //Editar
-    public function editProfer(Request $request)
+    public function editProfer(Request $request, $id_profer)
     {
-        //
+        $datoProfer = request()->except((['_token', '_method']));
+        profer::where('id_profer', '=', $id_profer)->update($datoProfer);
+
+        return redirect('/profer')->with('proferModificado', "Nombre del Profesor Modificado");
     }
 
     //Eliminar

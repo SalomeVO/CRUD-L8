@@ -43,7 +43,7 @@ Route::get('/formProfer', [ProferController::class,'formProfer']);
 Route::post('/profer/crearProfer', [ProferController::class,'saveProfer'])->name('Profer.save');
 
 //Ruta de Formulario Editar
-Route::get('/editformProfer/{id}', [ProferController::class,'editformProfer'])->name('editformProfer');
+Route::get('/editformProfer/{id_profer}', [ProferController::class,'editformProfer'])->name('editformProfer');
 
 //Ruta para Editar
 Route::patch('/editProfer/{id}', [ProferController::class, 'editProfer'])->name('editProfer');

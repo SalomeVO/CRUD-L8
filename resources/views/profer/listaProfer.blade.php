@@ -16,7 +16,14 @@
                     </div>
                 @endif
 
-            <!--Mensaje de Eliminado-->
+                <!--Mensaje de Eliminado-->
+                @if(session('proferModificado'))
+                    <div class="alert alert-success">
+                        {{session('proferModificado')}}
+                    </div>
+                @endif
+
+                <!--Mensaje de Eliminado-->
                 @if(session('proferEliminado'))
                     <div class="alert alert-success">
                         {{session('proferEliminado')}}
@@ -45,7 +52,7 @@
 
                                     <div class="btn-group">
 
-                                        <a href="" class="btn btn-primary mb-3 mr-2">
+                                        <a href="{{route('editformProfer', $profers->id_profer)}}" class="btn btn-primary mb-3 mr-2">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
