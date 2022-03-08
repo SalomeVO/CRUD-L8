@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudenController; //necesario para las rutas
-
+use App\Http\Controllers\ProferController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +31,22 @@ Route::get('/editform/{id}', [StudenController::class,'editform'])->name('editfo
 
 //Ruta para Editar
 Route::patch('/edit/{id}', [StudenController::class, 'edit'])->name('edit');
+
+
+//Rutas de profer: Ruta de Lista
+Route::get('/profer', [ProferController::class,'listaProfer']);
+
+//Ruta de Formulario Guardar
+Route::get('/formProfer', [ProferController::class,'formProfer']);
+
+//Ruta para Guardar al usuario
+Route::post('/profer/crearProfer', [ProferController::class,'saveProfer'])->name('Estudiante.save');
+
+//Ruta para Eliminar
+Route::delete('/deleteProfer/{id}', [ProferController::class,'destroy'])->name('deleteProfer');
+
+//Ruta de Formulario Editar
+Route::get('/editformProfer/{id}', [ProferController::class,'editformProfer'])->name('editformProfer');
+
+//Ruta para Editar
+Route::patch('/editProfer/{id}', [ProferController::class, 'editProfer'])->name('editProfer');
