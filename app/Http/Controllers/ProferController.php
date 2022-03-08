@@ -16,7 +16,7 @@ class ProferController extends Controller
     //Lista
     public function listaProfer()
     {
-        $datos['profers'] = profer::paginate(50); //el numero de filas
+        $datos['profer'] = profer::paginate(50); //el numero de filas
 
         return view('profer.listaProfer', $datos);
     }
@@ -38,7 +38,7 @@ class ProferController extends Controller
             'nombre_profe'=> $validator_l['nombre_profe'],
         ]);
 
-        return redirect('/listaProfer')->with('proferGuardado', "Nombre del Profesor Guardado");
+        return redirect('/profer')->with('proferGuardado', "Nombre del Profesor Guardado");
     }
 
     //Formulario Editar
