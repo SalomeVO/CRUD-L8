@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\profer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\log;
 
 class ProferController extends Controller
 {
     //Lista
     public function listaProfer()
     {
+
         $datos['profer'] = profer::paginate(50); //el numero de filas
 
         return view('profer.listaProfer', $datos);
@@ -24,15 +26,24 @@ class ProferController extends Controller
     //Guardar
     public function saveProfer(Request $request)
     {
-        $validator_l = $this->validate($request, [
-            'nombre_profe'=>'required|string|max:45|unique:profers',
-        ]);
+        try {
+            $validator_l = $this->validate($request, [
+                'nombre_profe'=>'required|string|max:45|unique:profers',
+            ]);
 
-        profer::create([
-            'nombre_profe'=> $validator_l['nombre_profe'],
-        ]);
+            //es "nombre"
+            profer::create([
+                'nombr_profe'=> $validator_l['nombre_profe'],
+            ]);
+        }catch (\Exception $exception){
+
+            Log::debug($exception->getMessage());
+
+            return view('profer.errors');
+        }
 
         return redirect('/profer')->with('proferGuardado', "Nombre del Profesor Guardado");
+
     }
 
     //Formulario Editar

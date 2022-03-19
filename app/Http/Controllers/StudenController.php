@@ -17,8 +17,7 @@ class StudenController extends Controller
         $studen = DB::table('estudiante')
             ->join('profers','estudiante.id_profer', '=', 'profers.id_profer')
             ->select('estudiante.*', 'profers.nombre_profe')
-            ->paginate(10);
-        ; //el numero de filas
+            ->paginate(10);//el numero de filas
 
         return view('Estudiante.listaStuden', compact('studen'));
 

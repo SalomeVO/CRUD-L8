@@ -15,14 +15,17 @@ class EstudianteFactory extends Factory
 
     protected $studen = Estudiante::class;
 
+
+
     public function definition()
     {
+        $foto=('uploads/3bP4irgptUfCXWNDi2vjNwdhd3ZoQn1xIcQEUJSp.jpg');
         return [
             //los campos para llenar
             'nombre'=>$this->faker->name,
             'correo'=>$this->faker->email ,
             'grado'=>$this->faker->randomDigit,
-            'foto'=>$this->faker->imageUrl($width = "100px", $height = "100px"),
+            'foto'=>$foto,
             'id_profer' => $this->faker->numberBetween(1,4) //el rango que quiero que me llene
         ];
     }
