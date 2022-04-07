@@ -5,7 +5,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="cold-md-11">
-                <h1 class="text-center mb-5">Estudiantes</h1>
+                <h1 class="text-center mb-5">Profesor</h1>
 
                 <a class="btn btn-success mb-4" href="{{url('/formProfer')}}">AGREGAR</a>
 
@@ -20,13 +20,6 @@
                 @if(session('proferModificado'))
                     <div class="alert alert-success">
                         {{session('proferModificado')}}
-                    </div>
-                @endif
-
-                <!--Mensaje de Eliminado-->
-                @if(session('proferEliminado'))
-                    <div class="alert alert-success">
-                        {{session('proferEliminado')}}
                     </div>
                 @endif
 
@@ -56,10 +49,10 @@
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
-                                        <form action="{{route('deleteProfer', $profers->id_profer)}}" method="POST">
+                                        <form action="{{route('deleteProfer', $profers->id_profer)}}" method="POST" class="Alert-eliminar">
                                             @csrf @method('DELETE')
 
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar al estudiante?');" class="btn btn-danger">
+                                            <button type="submit" class="btn btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
 
@@ -81,4 +74,54 @@
         </div>
     </div>
 
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Mensaje de Eliminado-->
+    @if(session('proferEliminado')=='Eliminado el profesor')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'Se elimino al profesor exitosamente',
+                'success'
+            )
+        </script>
+    @endif
+        <script>
+            $('.Alert-eliminar').submit(function (e){
+              e.preventDefault();
+
+                Swal.fire({
+                    title: '¿Esta seguro que desea eliminar al Profesor?',
+                    text: "Si presiona si se eliminara definitivamente",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                    }
+                })
+            });
+        </script>
+
+    @if(session('alerta')=='ok')
+
+        <script>
+            Swal.fire({
+                title: 'No se puede eliminar al profesor',
+                text:'Este profesor ya esta ligado a los estudiantes, por ende es imposible eliminarlo',
+                width: 600,
+                padding: '3em',
+                color: '#050404',
+                background: '#fff url(/images/trees.png)',
+                backdrop: `#F82D23`
+            })
+        </script>
+    @endif
 @endsection

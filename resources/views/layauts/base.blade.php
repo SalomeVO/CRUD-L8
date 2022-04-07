@@ -51,5 +51,6 @@
      @yield('content') <!--para navbar-->
    </div>
 
+@yield('js')<!--Ayuda con mostrar el mensaje de error-->
  </body>
 </html>

@@ -9,13 +9,6 @@
 
                 <a class="btn btn-success mb-4" href="{{url('/form')}}">AGREGAR</a>
 
-                <!--Mensaje de Eliminar-->
-                @if(session('studenEliminado'))
-                    <div class="alert alert-success">
-                        {{ session('studenEliminado') }}
-                    </div>
-                @endif
-
             <!--Mensaje de Modificacion-->
                 @if(session('studenModificado'))
                     <div class="alert alert-success">
@@ -64,10 +57,10 @@
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
-                                        <form action="{{ route('delete', $studens->id) }}" method="POST">
-                                            @csrf @method('DELETE')
+                                        <form action="{{ route('delete', $studens->id) }}" class="Alert-danger" method="POST">
+                                            @method('DELETE') @csrf
 
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar al estudiante?');" class="btn btn-danger">
+                                            <button type="submit" class="btn btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
 
@@ -88,5 +81,41 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Mensaje de Eliminado-->
+    @if(session('studenEliminado') =='Eliminado')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'Se elimino al estudiante exitosamente',
+                'success'
+            )
+        </script>
+    @endif
+        <script>
+            $('.Alert-danger').submit(function (e){
+                e.preventDefault();
+
+                    Swal.fire({
+                        title: '¿Esta seguro que desea eliminar al Estudiante?',
+                        text: "Si presiona si se eliminara definitivamente",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si eliminar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                        }
+                    })
+                });
+        </script>
 
 @endsection
+

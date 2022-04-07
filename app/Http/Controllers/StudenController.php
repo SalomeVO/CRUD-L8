@@ -75,7 +75,7 @@ class StudenController extends Controller
             Estudiante::destroy($id); //eliminar los estudiantes
         }
 
-        return redirect('/')->with('studenEliminado', 'Estudiante Eliminado');
+        return redirect('/')->with('studenEliminado', 'Eliminado');
     }
 
     //Formulario Guardar

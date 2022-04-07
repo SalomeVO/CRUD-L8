@@ -33,13 +33,13 @@ class ProferController extends Controller
 
             //es "nombre"
             profer::create([
-                'nombr_profe'=> $validator_l['nombre_profe'],
+                'nombre_profe'=> $validator_l['nombre_profe'],
             ]);
         }catch (\Exception $exception){
 
             Log::debug($exception->getMessage());
 
-            return view('profer.errors');
+            return redirect('/formProfer')->with('alerta', 'ok');
         }
 
         return redirect('/profer')->with('proferGuardado', "Nombre del Profesor Guardado");
@@ -66,8 +66,16 @@ class ProferController extends Controller
     //Eliminar
     public function destroy($id_profer)
     {
-        profer::destroy($id_profer);
+        try{
+            profer::destroy($id_profer);
 
-        return redirect('/profer')->with('proferEliminado', "El nombre del profesor fue eliminado");
+            return redirect('/profer')->with('proferEliminado', "Eliminado el profesor");
+
+        }catch (\Exception $exception){
+
+            Log::debug($exception->getMessage());
+
+            return redirect('/profer')->with('alerta', 'ok');
+        }
     }
 }
