@@ -63,4 +63,19 @@
            })
        </script>
    @endif
+
+   @if(session('alertaQery')=='murio')
+
+       <script>
+           Swal.fire({
+               title: 'No se pudo agregar al profesor',
+               text:'Es un error de Base de datos',
+               width: 600,
+               padding: '3em',
+               color: '#050404',
+               background: '#fff url(/images/trees.png)',
+               backdrop: `#F82D23`
+           })
+       </script>
+   @endif
 @endsection

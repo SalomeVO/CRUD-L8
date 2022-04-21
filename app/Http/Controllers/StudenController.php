@@ -67,7 +67,7 @@ class StudenController extends Controller
     //Eliminar
     public function delete($id){
 
-        $studen= Estudiante::findOrFail($id);
+        $studen= Estudiante::FindOrFail($id);
 
         //para eliminar foto
         if(Storage::delete('public/'.$studen->foto)){

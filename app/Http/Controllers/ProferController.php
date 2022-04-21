@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\profer;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\log;
 
@@ -28,18 +29,26 @@ class ProferController extends Controller
     {
         try {
             $validator_l = $this->validate($request, [
-                'nombre_profe'=>'required|string|max:45|unique:profers',
+                'nombre_profe'=>'required|string|max:45|unique:profers', //profers
             ]);
 
             //es "nombre"
             profer::create([
-                'nombre_profe'=> $validator_l['nombre_profe'],
+                'nombr_profe'=> $validator_l['nombre_profe'],
             ]);
-        }catch (\Exception $exception){
+
+        }catch(QueryException $queryException){
+
+            Log::debug($queryException->getMessage());
+
+            return redirect('/formProfer')->with('alertaQery', 'murio');
+
+        } catch (\Exception $exception){
 
             Log::debug($exception->getMessage());
 
             return redirect('/formProfer')->with('alerta', 'ok');
+
         }
 
         return redirect('/profer')->with('proferGuardado', "Nombre del Profesor Guardado");

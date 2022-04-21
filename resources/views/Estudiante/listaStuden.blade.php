@@ -60,7 +60,7 @@
                                         <form action="{{ route('delete', $studens->id) }}" class="Alert-danger" method="POST">
                                             @method('DELETE') @csrf
 
-                                            <button type="submit" class="btn btn-danger">
+                                            <button type="submit" onclick="eliminar({{$studens->id}})" class="btn btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
 
@@ -86,20 +86,9 @@
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!--Mensaje de Eliminado-->
-    @if(session('studenEliminado') =='Eliminado')
-        <script>
-            Swal.fire(
-                '¡Eliminado!',
-                'Se elimino al estudiante exitosamente',
-                'success'
-            )
-        </script>
-    @endif
-        <script>
-            $('.Alert-danger').submit(function (e){
-                e.preventDefault();
 
+        <script>
+            function eliminar(studen){
                     Swal.fire({
                         title: '¿Esta seguro que desea eliminar al Estudiante?',
                         text: "Si presiona si se eliminara definitivamente",
@@ -111,10 +100,15 @@
                         cancelButtonText: 'Cancelar'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            this.submit();
+                            document.getElementById(studen).submit()
+                            Swal.fire(
+                                '¡Eliminado!',
+                                'Se elimino al estudiante exitosamente',
+                                'success'
+                            )
                         }
                     })
-                });
+                }
         </script>
 
 @endsection

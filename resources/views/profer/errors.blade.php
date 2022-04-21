@@ -8,10 +8,6 @@
     <title>Errores</title>
 </head>
 <body>
-
-<script>
-
-</script>
-
+ <h1>Esta muy llen</h1>
 </body>
 </html>
