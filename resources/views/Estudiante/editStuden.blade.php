@@ -73,9 +73,13 @@
                             </div>
 
                             <div class="row form-group">
-                                <button type="submit" class="btn btn-primary text-dark col-md-9 offset-2 mb-2" style="background-color: #5499C7;">Modificar</button>
+                                <button type="submit" class="btn btn-primary text-dark col-md-9 offset-2 mb-2" style="background-color: #5499C7;">
+                                    <i class="fas fa-undo"> Modificar</i>
+                                </button>
 
-                                <a class="btn btn-outline-secondary col-md-9 offset-2 text-dark" href="{{url('/')}}" role="button">Regresar</a>
+                                <a class="btn btn-outline-secondary col-md-9 offset-2 text-dark" href="{{url('/')}}" role="button">
+                                    <i class="fas fa-exchange-alt"> Regresar</i>
+                                </a>
                             </div>
 
                         </div>

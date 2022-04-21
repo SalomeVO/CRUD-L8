@@ -5,9 +5,13 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="cold-md-11">
-                <h1 class="text-center mb-5">Estudiantes</h1>
+                <h1 class="text-center mb-5">
+                    <i class="fas fa-user-graduate"> Estudiantes</i>
+                </h1>
 
-                <a class="btn btn-success mb-4" href="{{url('/form')}}">AGREGAR</a>
+                <a class="btn btn-success mb-4" href="{{url('/form')}}">
+                    <i class="fas fa-user-plus"> AGREGAR</i>
+                </a>
 
             <!--Mensaje de Modificacion-->
                 @if(session('studenModificado'))
@@ -61,7 +65,7 @@
                                             @method('DELETE') @csrf
 
                                             <button type="submit" onclick="eliminar({{$studens->id}})" class="btn btn-danger">
-                                                <i class="fas fa-trash-alt"></i>
+                                                <i class="fas fa-dumpster"></i>
                                             </button>
 
                                         </form>

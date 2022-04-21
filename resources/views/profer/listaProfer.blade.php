@@ -5,9 +5,13 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="cold-md-11">
-                <h1 class="text-center mb-5">Profesor</h1>
+                <h1 class="text-center mb-5">
+                    <i class="fas fa-user-tie"> Profesor</i>
+                </h1>
 
-                <a class="btn btn-success mb-4" href="{{url('/formProfer')}}">AGREGAR</a>
+                <a class="btn btn-success mb-4" href="{{url('/formProfer')}}">
+                    <i class="fas fa-user-plus"> AGREGAR</i>
+                </a>
 
                 <!--Mensaje de Guardado-->
                 @if(session('proferGuardado'))

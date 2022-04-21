@@ -19,7 +19,7 @@ class EstudianteFactory extends Factory
 
     public function definition()
     {
-        $foto=('uploads/3bP4irgptUfCXWNDi2vjNwdhd3ZoQn1xIcQEUJSp.jpg');
+        $foto=('uploads/photo5127491190038571555 (2).jpg');
         return [
             //los campos para llenar
             'nombre'=>$this->faker->name,
