@@ -2,7 +2,7 @@
 @section('title', 'Formulario') <!--nombre pagina, nombre de seccion-->
 @section('content')
 
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5">
 
