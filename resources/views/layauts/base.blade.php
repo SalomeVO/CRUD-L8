@@ -30,22 +30,46 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        TABLAS
+                        <i class="fas fa-clipboard"> TABLAS</i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #F0F8FF;">
-                        <a class="dropdown-item" href="{{url('/')}}">Tabla Estudiante</a>
-                        <a class="dropdown-item" href="{{url('/')}}">Lista</a>
-                        <a class="dropdown-item" href="{{url('/form')}}">Agregar</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{url('/profer')}}">Tabla Profesor</a>
-                        <a class="dropdown-item" href="{{url('/profer')}}">Lista</a>
-                        <a class="dropdown-item" href="{{url('/formProfer')}}">Agregar</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: transparent;">
+                        <a class="nav-link disabled">
+                            <i class="fas fa-user-graduate"> Tabla Estudiante</i>
+                        </a>
+                        <a class="dropdown-item" href="{{url('/')}}">
+                            <i class="fas fa-graduation-cap"> Lista</i>
+                        </a>
+                        <a class="dropdown-item" href="{{url('/form')}}">
+                            <i class="fas fa-plus"> Agregar</i>
+                        </a>
+                            <div class="dropdown-divider"></div>
+                        <a class="nav-link disabled">
+                            <i class="fas fa-user-tie"> Tabla Profesor</i>
+                        </a>
+                        <a class="dropdown-item" href="{{url('/profer')}}">
+                            <i class="fas fa-chalkboard-teacher"> Lista</i>
+                        </a>
+                        <a class="dropdown-item" href="{{url('/formProfer')}}">
+                            <i class="fas fa-user-plus"> Agregar</i>
+                        </a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="https://github.com/SalomeVO/SalomeV_0909_20_5202.git" >GitHub</a>
-                </li>
             </ul>
+            <form>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="https://github.com/SalomeVO/SalomeV_0909_20_5202.git" >
+                            <i class="fa-2x fab fa-github-square"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link text-dark" href="https://youtu.be/w7OSE1-8F8s" >
+                            <i class="fa-2x fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </form>
         </div>
     </nav>
 

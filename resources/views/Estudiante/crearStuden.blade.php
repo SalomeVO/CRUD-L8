@@ -74,7 +74,7 @@
                                 </button>
 
                                 <a class="btn btn-outline-secondary col-md-9 offset-2 text-dark" href="{{url('/')}}" role="button">
-                                    <i class="fas fa-exchange-alt"> Regresar</i>
+                                    <i class="far fa-hand-point-left"> Regresar</i>
                                 </a>
                             </div>
 
