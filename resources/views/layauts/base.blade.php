@@ -58,14 +58,14 @@
             <form>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="https://github.com/SalomeVO/SalomeV_0909_20_5202.git" >
-                            <i class="fa-2x fab fa-github-square"></i>
+                        <a class="nav-link text-dark" href="https://github.com/SalomeVO/CRUD-L8" >
+                            <i class="fa-3x fab fa-github-square"></i>
                         </a>
                     </li>
 
                     <li class="nav-item ">
                         <a class="nav-link text-dark" href="https://youtu.be/w7OSE1-8F8s" >
-                            <i class="fa-2x fab fa-youtube"></i>
+                            <i class="fa-3x fab fa-youtube"></i>
                         </a>
                     </li>
                 </ul>
@@ -77,6 +77,8 @@
      @yield('content') <!--para navbar-->
    </div>
 
-@yield('js')<!--Ayuda con mostrar el mensaje de error-->
+<script src="{{asset('js/app.js')}}"></script>
+ @yield('js')<!--Ayuda con mostrar el mensaje de error-->
+
  </body>
 </html>

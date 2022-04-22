@@ -34,7 +34,7 @@ class ProferController extends Controller
 
             //es "nombre"
             profer::create([
-                'nombr_profe'=> $validator_l['nombre_profe'],
+                'nombre_profe'=> $validator_l['nombre_profe'],
             ]);
 
         }catch(QueryException $queryException){

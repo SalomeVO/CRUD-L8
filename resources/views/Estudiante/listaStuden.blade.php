@@ -61,10 +61,10 @@
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
-                                        <form action="{{ route('delete', $studens->id) }}" class="Alert-danger" method="POST">
+                                        <form action="{{ route('delete', $studens->id) }}" id="{{$studens->id}}" class="Alert-danger" method="POST">
                                             @method('DELETE') @csrf
 
-                                            <button type="submit" onclick="eliminar({{$studens->id}})" class="btn btn-danger">
+                                            <button type="button" onclick="eliminar({{$studens->id}})" class="btn btn-danger">
                                                 <i class="fas fa-dumpster"></i>
                                             </button>
 
@@ -90,30 +90,34 @@
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
+    <!--Mensaje de Eliminado-->
+    @if(session('studenEliminado')=='Eliminado')
         <script>
-            function eliminar(studen){
-                    Swal.fire({
-                        title: '¿Esta seguro que desea eliminar al Estudiante?',
-                        text: "Si presiona si se eliminara definitivamente",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si eliminar',
-                        cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            document.getElementById(studen).submit()
-                            Swal.fire(
-                                '¡Eliminado!',
-                                'Se elimino al estudiante exitosamente',
-                                'success'
-                            )
-                        }
-                    })
-                }
+            Swal.fire(
+                '¡Eliminado!',
+                'Se elimino al profesor exitosamente',
+                'success'
+            )
         </script>
+    @endif
 
+    <script>
+        function eliminar(studen){
+                Swal.fire({
+                    title: '¿Esta seguro que desea eliminar al Estudiante?',
+                    text: "Si presiona si se eliminara definitivamente",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(studen).submit()
+                    }
+                })
+            }
+    </script>
 @endsection
 
