@@ -13,20 +13,6 @@
                     <i class="fas fa-user-plus"> AGREGAR</i>
                 </a>
 
-                <!--Mensaje de Guardado-->
-                @if(session('proferGuardado'))
-                    <div class="alert alert-success">
-                        {{session('proferGuardado')}}
-                    </div>
-                @endif
-
-                <!--Mensaje de Eliminado-->
-                @if(session('proferModificado'))
-                    <div class="alert alert-success">
-                        {{session('proferModificado')}}
-                    </div>
-                @endif
-
                 <div class="col-xl-30">
                     <table class="table table-bordered table-striped text-center" style="background-color: #ABEBC6;">
                         <thead>
@@ -82,6 +68,31 @@
 
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Mensaje de Modificacion-->
+    @if(session('proferModificado')=='Nombre del Profesor Modificado')
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Nombre del Profesor Modificado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    @endif
+
+    <!--Mensaje de Guardado-->
+    @if(session('proferGuardado')=='Nombre del Profesor Guardado')
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Nombre del Profesor Guardado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    @endif
+
 
     <!--Mensaje de Eliminado-->
     @if(session('proferEliminado')=='Eliminado el profesor')
